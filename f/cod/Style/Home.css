@@ -1,0 +1,104 @@
+*{
+    font-family: poppins
+}
+.homediv{
+    margin-top: 100px;
+    display: flex;
+   
+}
+.homediv img{
+    width: 700px;
+    box-shadow: -0px 0px 20px 5px rgba(208, 255, 255, 0.37);
+}
+.homediv2{
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.homediv2 p{
+    text-align: justify;
+}
+.homediv button{
+    padding: 20px ;
+    margin-left: 20px;
+    background-color: #8de4fab4;
+    font-weight: 500;
+    font-size: 15px;
+     transition: 0.3s;
+}
+.homediv2 button:hover{
+    color: black;
+    background-color: white;
+    border-radius: 30px;
+  
+}
+.techdiv{
+    display: flex;
+    margin-left:    10%;
+    margin-right: 10%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.849);
+    color: black;
+    width: 80%;
+}
+.techdiv ul{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+}
+.techdiv ul li{
+    width: 250px;
+    margin: 5px;
+   
+}
+.techdiv ul li:not(:last-child){
+ border-right: 1px solid;
+}
+
+.helpdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
+.helpdiv img{
+    width: 700px;
+  
+}
+.helpdiv2{
+    display:flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.helpdiv2 p{
+    text-align: justify;
+}
+.helpdiv2 button {
+    padding: 20px;
+    margin-right: 12px;
+    background-color: #8de4fab4;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease; /* Moved transition here */
+}
+
+.helpdiv2 button:hover {
+    color: black;
+    background-color: white;
+    border-radius: 30px;
+}

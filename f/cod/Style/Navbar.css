@@ -1,0 +1,85 @@
+.navbar{
+    display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',sans-serif;
+    flex-wrap: wrap;
+    align-items: center; 
+    color: white;
+
+}
+.navlogo {
+  font-family: "Poppins", sans-serif; 
+  font-weight: 100;
+  margin-left: 50px;
+  animation: floatLeftRight 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Animation Keyframes */
+@keyframes floatLeftRight {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+.navlinks{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+.navlinks ul {  
+    display: flex;
+}
+.navbar ul{
+   
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.navbar ul li{
+    margin: 0 5px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+
+}
+
+.navbar ul li a:active{
+    color: white;
+}
+.navbar ul li a {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+ 
+}
+
+/* Bottom border animation */
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 45px;
+  bottom: 5px;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.418);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* Hover styles */
+.navbar ul li a:hover {
+ box-shadow: 0px 10px 30px -10px white;
+}
+
+.navbar ul li a:hover::after {
+  transform: scaleX(1);
+}

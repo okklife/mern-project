@@ -1,0 +1,38 @@
+.mainlogin {
+  display: flex;
+  justify-content: center;
+}
+.loginimage {
+  text-align: center;
+}
+.loginimage img {
+  max-width: 100%;
+  width: 500px;
+  height: 100%;
+  object-fit: cover;
+}
+.loginform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.loginform label{
+    text-align: start;
+    font-family: poppins;
+
+}
+.loginform input{
+    padding: 20px;
+    width: 500px;
+}
+.loginform button{
+  padding: 10px 20px;
+  align-self: flex-start;
+  margin-top: 20px;
+  font-family: poppins;
+  font-weight: 500;
+  box-shadow: 1px 1px 5px 0px rgb(255, 255, 255);
+  background-color: rgb(76, 156, 143);
+}

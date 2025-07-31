@@ -1,0 +1,117 @@
+.register{
+    margin-top: 100px;
+    display: flex;
+   align-items: center;
+    justify-content: center;
+
+}
+.registerimg{
+   
+    margin: 0;
+}
+@keyframes gentleFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.registerimg img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: cover;
+  width: 700px;
+  display: block;
+  border-radius: 10px;
+
+  animation:
+    gentleFloat 6s ease-in-out infinite,
+    softGlow 5s ease-in-out infinite,
+    subtleFlicker 8s ease-in-out infinite;
+}
+.registerform form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.registerform form input{
+
+    width: 500px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 20px;
+
+}
+.registerform form label{
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: white;
+}
+.registerform form input:focus{
+    outline: none;
+    border-color: #f9e79f; /* Slight yellow highlight or any accent */
+}
+.typetext {
+  border-bottom: 2px solid;;
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  background-color: #111;  
+}
+
+.typewriter {
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  animation: 
+    typing 3s steps(18, end) 1s infinite alternate,
+    blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  0%   { width: 0; }
+  100% { width: 15ch; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50%      { border-color: white; }
+}
+
+.submitbutton {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 32px;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border: 2px solid #00ffd5;
+  border-radius: 30px;
+  box-shadow: 0 0 6px #00ffd5;
+  cursor: pointer;
+  outline: none;
+}
+
+.submitbutton:hover {
+  background-color: #00ffd5;
+  color: #000;
+  box-shadow: 0 0 6px #00ffd5;
+}
+
+.submitbutton:active {
+  background-color: #00ccaa;
+  color: #000;
+}
+.submitbutton a {
+  text-decoration: none;
+  color: inherit; /* Inherit color from the button */
+}   
+.submitbutton2{
+   float: right;
+}
