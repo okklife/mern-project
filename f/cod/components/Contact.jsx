@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Style/Contact.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../store/auth";
 
 const Contact = () => {
   const [review, setreview] = useState({
@@ -9,6 +10,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
+   const {validtoken} =useAuth()
 
   const handledata = (e) => {
     const name = e.target.name;
@@ -23,22 +25,26 @@ const Contact = () => {
       e.preventDefault();
       const response = await fetch("http://localhost:3000/api/user/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" ,
+          Authorization :validtoken
+        },
         body: JSON.stringify(review),
         credentials: "include",
       });
+        const data = await response.json();
       if (!response.ok) {
-        toast.error(data.error || "Something went wrong!", {
+        toast.error(data.message || "Something went wrong!", {
           toastId: "contact-error",
         });
         return;
       }
-      const data = await response.json();
+    
       toast.success("Sent succesfully", {
         toastId: "sentsuccess",
       });
     } catch (error) {
-      toast.error("Network error. Please try again.", {
+       const data = await response.json();
+      toast.error(data.error, {
         toastId: "network-error",
       });
     }

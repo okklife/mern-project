@@ -59,10 +59,11 @@ const login = async (req, res) => {
     }
     const comparepassword = await bcrypt.compare(data.password, user.password);
     if (comparepassword) {
-      const token = generateToken(user);
+      const token = generateToken(user); 
       res.cookie("token", token, {
         httpOnly: true,
         secure: false,
+        sameSite: "Lax",
         maxage: 24 * 60 * 60 * 1000, // 1 day
       });
       res.status(200).json({
