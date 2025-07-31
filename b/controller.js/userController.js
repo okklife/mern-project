@@ -67,6 +67,7 @@ const login = async (req, res) => {
         maxage: 24 * 60 * 60 * 1000, // 1 day
       });
       res.status(200).json({
+        user,
         message: "Login successful",
         token,
         id: user._id.toString(),

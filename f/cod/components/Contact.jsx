@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Style/Contact.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,45 +10,60 @@ const Contact = () => {
     email: "",
     message: "",
   });
-   const {validtoken} =useAuth()
+
+  const { validtoken, validuser } = useAuth();
+ 
+
+  // Autofill username and email when validuser is available
+  useEffect(() => {
+    if (validuser) {
+      setreview((prev) => ({
+        ...prev,
+        username: validuser.username || "",
+        email: validuser.email || "",
+      }));
+    }
+  }, [validuser]);
 
   const handledata = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setreview({
-      ...review,
+    const { name, value } = e.target;
+    setreview((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
+
   const handlesubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const response = await fetch("http://localhost:3000/api/user/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" ,
-          Authorization :validtoken
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: validtoken,
         },
         body: JSON.stringify(review),
         credentials: "include",
       });
-        const data = await response.json();
+
+      const data = await response.json();
+
       if (!response.ok) {
         toast.error(data.message || "Something went wrong!", {
           toastId: "contact-error",
         });
         return;
       }
-    
-      toast.success("Sent succesfully", {
-        toastId: "sentsuccess",
-      });
+
+      toast.success("Sent successfully", { toastId: "sentsuccess" });
+      setreview({  message: "" });
     } catch (error) {
-       const data = await response.json();
-      toast.error(data.error, {
+      toast.error("Network error. Please try again.", {
         toastId: "network-error",
       });
     }
   };
+
   return (
     <>
       <div className="contact-container">
@@ -65,6 +80,12 @@ const Contact = () => {
               onChange={handledata}
               placeholder="Username"
               required
+              readOnly
+              style={{
+                userSelect: "none",
+                pointerEvents: "none",
+                backgroundColor: "#f0f0f0", // Optional: visually shows it's locked
+              }}
             />
             <input
               type="email"
@@ -73,6 +94,12 @@ const Contact = () => {
               onChange={handledata}
               placeholder="Email"
               required
+              readOnly
+              style={{
+                userSelect: "none",
+                pointerEvents: "none",
+                backgroundColor: "#f0f0f0", // Optional: visually shows it's locked
+              }}
             />
             <textarea
               placeholder="Message"
@@ -85,6 +112,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+
       <div style={{ maxWidth: "800px", margin: "auto" }}>
         <h2>Sector 20-C, Chandigarh</h2>
         <iframe
@@ -98,6 +126,7 @@ const Contact = () => {
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.1574385955936!2d76.78352047492694!3d30.721410174638308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fed427ff6a6d1%3A0xf52c95cf2f5d44a5!2sSector%2020-C%2C%20Chandigarh%2C%20160020!5e0!3m2!1sen!2sin!4v1722300141234"
         ></iframe>
       </div>
+
       <ToastContainer position="top-right" theme="dark" autoClose={1000} />
     </>
   );

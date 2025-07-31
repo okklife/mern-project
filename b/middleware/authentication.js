@@ -9,6 +9,7 @@ const authentication = (req, res,next) => {
     }
     const decoded = jwts.verify(token, securekey);
     if(decoded){
+      req.user = decoded
       next();
     }
   

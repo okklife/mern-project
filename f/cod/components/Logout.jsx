@@ -7,10 +7,11 @@ import Home from "./Home";
 
 
 const Logout= ()=>{
-    const {deletetoken} = useAuth()
+    const {deletetoken,deleteuser} = useAuth()
     const navigate = useNavigate()
     useEffect(()=>{
      deletetoken()
+     deleteuser()
     
      toast.success("Logout Success", {
        toastId: "logout-success",

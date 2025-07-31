@@ -5,12 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 const Login = () => {
-   const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  const { storeToken } = useAuth();
+  const { storeToken,storeUser } = useAuth();
   const handleinput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -19,35 +19,34 @@ const Login = () => {
       [name]: value,
     });
   };
-  const handlesubmit= async(e)=>{
-    try{
-    e.preventDefault()
-    const response = await fetch("http://localhost:3000/api/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    });
-     const data = await response.json();
-     if(!response.ok){
-       toast.error(data.error || "Something went wrong!", {
+  const handlesubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await fetch("http://localhost:3000/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        toast.error(data.error || "Something went wrong!", {
           toastId: "signup-error",
         });
-        return
+        return;
       }
-      storeToken(data.token)
-      toast.success("Loign Sucessfull",{
-        toastId :"login-success"
-      })
-     setTimeout(() => navigate("/"), 1500); 
-    }
-    catch(error){
+      
+      storeToken(data.token);
+      storeUser(data.user)
+      toast.success("Loign Sucessfull", {
+        toastId: "login-success",
+      });
+      setTimeout(() => navigate("/"), 1500);
+    } catch (error) {
       toast.error("Network error. Please try again.", {
-        toastId: "network-error",})
-
+        toastId: "network-error",
+      });
     }
-
-  }
-  
+  };
 
   return (
     <>
@@ -71,9 +70,7 @@ const Login = () => {
               placeholder="enter password"
               onChange={handleinput}
             />
-            <button type="submit">
-              Login
-            </button>
+            <button type="submit">Login</button>
           </div>
         </form>
       </div>
