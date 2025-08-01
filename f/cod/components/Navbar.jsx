@@ -21,22 +21,23 @@ const Navabar = () => {
               <li>
                 <NavLink to="/contact">Contact</NavLink>
               </li>
-              {
-                isloggedin ? (
+              <li>
+                <NavLink to="/services">Services</NavLink>
+              </li>
+              {isloggedin ? (
+                <li>
+                  <NavLink to="/logout">Logout</NavLink>
+                </li>
+              ) : (
+                <>
                   <li>
-                    <NavLink to="/logout">Logout</NavLink>
+                    <NavLink to="/login">Login</NavLink>
                   </li>
-                ) : (
-                  <>
-                    <li>
-                      <NavLink to="/login">Login</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/register">Register</NavLink>
-                    </li>
-                  </>
-                )
-              }
+                  <li>
+                    <NavLink to="/register">Register</NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

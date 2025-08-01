@@ -1,0 +1,66 @@
+.course-card {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-family: 'Segoe UI', sans-serif;
+  color: #f0f0f0;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.course-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover .course-image {
+  transform: scale(1.03);
+}
+
+.course-details {
+  padding: 16px;
+  display: flex;
+  border-bottom: 2px solid #2e2e2e;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.course-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.course-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #dcdcdc;
+}
+
+.course-price {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.course-date {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+}
+
+.cardflex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

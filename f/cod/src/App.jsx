@@ -10,28 +10,28 @@ import Navabar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Notfound from '../components/Notfound'
 import Logout from '../components/Logout'
+import Service from '../components/Service'
 function App() {
 
 
   return (
     <>
-    <BrowserRouter>
-    <Navabar />
-    <Routes>
-      <Route path="/" element={<Home /> } />
-      <Route path="/about" element={<About /> } />
-      <Route path="/contact" element={<Contact /> } />
-      <Route path="/login" element={<Login /> } />
-      <Route path="/register" element={<Register /> } />
-      <Route path='/logout' element={<Logout />} />
-      <Route path='*' element={<Notfound />} />
-    
-
-    </Routes>
-    <Footer/>
-     </BrowserRouter>
+      <BrowserRouter>
+        <Navabar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="*" element={<Notfound />} />
+          <Route path="/services" element={<Service />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App
